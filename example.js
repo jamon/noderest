@@ -15,8 +15,9 @@ rest
         sys.log("requested person: " + personId);
         if(typeof people[personId] === "undefined") {
             resource.notFound();
+        } else {
+            resource.ok(people[personId]);
         }
-        resource.ok(people[personId]);
     });
 
 rest
