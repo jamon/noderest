@@ -9,10 +9,8 @@ rest
     .path("/person/{id}")
     .method("GET")
     .as(function(req, resource) {
-        sys.log("pathparam id: ")
-        sys.log(req.pathParam("id"));
         var personId = parseInt(req.pathParam("id"));
-        sys.log("requested person: " + personId);
+        sys.log("incoming request for person id: " + personId);
         if(typeof people[personId] === "undefined") {
             resource.notFound();
         } else {
