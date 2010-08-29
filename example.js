@@ -5,6 +5,8 @@ var people = [
         {id: 1, name: "Brian Smith"},
         {id: 2, name: "Kate Bowers"}
     ];
+
+// resources
 rest
     .path("/person/{id}")
     .method("GET")
@@ -18,6 +20,15 @@ rest
         }
     });
 
+// list of references to resources
+rest
+    .path("/person_ref")
+    .method("GET")
+    .as(function(req, resource) {
+        resource.ref(people, 'id', '/person/{id}');
+    });
+
+// list of resources
 rest
     .path("/person")
     .method("GET")
@@ -25,4 +36,4 @@ rest
         resource.ok(people);
     });
 
-rest.start(8888);
+rest.start(8088);
